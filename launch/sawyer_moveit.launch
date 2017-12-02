@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Add planning context launch file -->
+  <include file="$(find sawyer_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="false"/>
+    <arg name="electric_gripper" value="true"/>
+    <arg name="tip_name" value="right_gripper"/>
+    <arg name="controller_box" value="true"/>
+  </include>
+
+  <!-- move_group settings -->
+  <arg name="allow_trajectory_execution" default="true"/>
+  <arg name="fake_execution" default="false"/>
+  <arg name="max_safe_path_cost" default="1"/>
+  <arg name="jiggle_fraction" default="0.05" />
+  <arg name="publish_monitored_planning_scene" default="true"/>
+
+  <!-- Planning Functionality -->
+  <include ns="move_group" file="$(find sawyer_moveit_config)/launch/planning_pipeline.launch.xml">
+    <arg name="pipeline" value="ompl" />
+  </include>
+
+  <!-- Trajectory Execution Functionality -->
+  <include ns="move_group" file="$(find sawyer_moveit_config)/launch/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">
+    <arg name="moveit_manage_controllers" value="true" />
+    <arg name="moveit_controller_manager" value="sawyer" unless="$(arg fake_execution)"/>
+    <arg name="moveit_controller_manager" value="fake" if="$(arg fake_execution)"/>
+  </include>
+
+  <arg name="camera_link_pose" default="0.15 0.075 0.5 0.0 0.7854 0.0"/>
+  <include file="$(find sawyer_moveit_config)/launch/move_group.launch">
+    <arg name="kinect" value="false" />
+    <arg name="xtion" value="false" />
+    <arg name="camera_link_pose" default="$(arg camera_link_pose)"/>
+    <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="fake_execution" value="false"/>
+    <arg name="info" value="true"/>
+    <arg name="debug" value="true"/>
+  </include>
+</launch>

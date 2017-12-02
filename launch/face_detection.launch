@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="detector_node" pkg="mouth_detector" type="detector_node.py" required="true" output="screen" />
+</launch>
