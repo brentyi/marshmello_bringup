@@ -12,6 +12,9 @@ tmux send-keys 'roslaunch marshmello_bringup kinect_localization.launch'
 tmux new-window -t marshmello -n 'face'
 tmux send-keys 'roslaunch marshmello_bringup face_detection.launch'
 
+tmux new-window -t marshmello -n 'marshmallow'
+tmux send-keys 'roslaunch marshmello_bringup marshmallow_localization.launch'
+
 tmux new-window -t marshmello -n 'planning'
 tmux send-keys 'roslaunch marshmello_bringup marshmello_planning.launch'
 

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <node name="camera_display" pkg="intera_examples" type="camera_display.py" args="--camera right_hand_camera" />
+    <node name="hand_camera" pkg="marshmellow_localization" type="hand_camera.py" output="screen" />
     <!--
     <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch" />
 

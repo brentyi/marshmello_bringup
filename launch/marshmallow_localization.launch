@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="mm_detector" pkg="marshmellow_localization" type="detector" required="true" output="screen">
+        <remap from="input" to="/kinect2/hd/points" />
+    </node>
+</launch>
