@@ -2,4 +2,5 @@
 <launch>
     <node name="planning_node" pkg="planning" type="planning_node.py" output="screen" />
     <node name="broadcast_tf" pkg="planning" type="tf_broadcast.py" output="screen" />
+    <node name="webhook" pkg="mouth_detector" type="scraper.py" output="screen" />
 </launch>

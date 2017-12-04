@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <launch>
     <node name="hand_camera" pkg="marshmellow_localization" type="hand_camera.py" output="screen" />
-    <!--
-    <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch" />
 
-    <node name="kinect_localization" pkg="marshmellow_localization" type="kinect_calibration.py" required="true" output="screen" />
+    <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch" />
 
     <node name="ar_track_alvar" pkg="ar_track_alvar" type="individualMarkersNoKinect" respawn="false" output="screen" >
         <param name="marker_size"           type="double" value="17.8" />
@@ -28,5 +26,5 @@
         <param name="marker_frame_prefix"   type="string" value="kinect_marker_" />
         <remap from="camera_image"  to="/kinect2/hd/points" />
         <remap from="camera_info"   to="/kinect2/hd/camera_info" />  
-    </node>-->
+    </node>
 </launch>

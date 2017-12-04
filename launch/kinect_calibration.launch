@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="kinect_localization" pkg="marshmellow_localization" type="kinect_calibration.py" required="true" output="screen" />
+</launch>
